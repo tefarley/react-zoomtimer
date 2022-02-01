@@ -9,11 +9,7 @@ const Guest = ({ guestInfo }) => {
 		setCurrentTime( Date.now() );
 	}, 1000, true, true );
 
-	return (
-		<>
-			<div>{guestInfo.email} has been waiting for <Counter initialTime={ guestInfo.created } currentTime={ currentTime } /></div>
-		</>
-	)
+	return <div>{guestInfo.email} has been waiting for <Counter initialTime={ guestInfo.created } currentTime={ currentTime } /></div>
 };
 
 export default Guest;
