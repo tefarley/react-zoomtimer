@@ -1,5 +1,6 @@
 import Guest from '../components/Guest/index';
-import styles from '../components/Guest/Guest.module.css';
+import { useState } from 'react';
+import { useIntervalWhen } from 'rooks';
 
 const Home = () => {
 	const guests = [
@@ -13,6 +14,12 @@ const Home = () => {
 		}
 	];
 
+	const [ currentTime, setCurrentTime ] = useState( Date.now() );
+
+	useIntervalWhen(() => {
+		setCurrentTime( Date.now() );
+	}, 1000, true, true );
+
 	return (
 		<>
 			{
@@ -21,7 +28,7 @@ const Home = () => {
 
 						<Guest 
 							guestInfo={ guest }
-							className={ styles.Guest }
+							currentTime={ currentTime }
 						/>
 
 					)
