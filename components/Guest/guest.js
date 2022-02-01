@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useIntervalWhen } from 'rooks';
-import Guest from './guest';
+import Counter from '../Counter/index';
 
-const Counter = ({ guests }) => {
+const Guest = ({ guestInfo }) => {
 	const [ currentTime, setCurrentTime ] = useState( Date.now() );
 
 	useIntervalWhen(() => {
@@ -11,20 +11,9 @@ const Counter = ({ guests }) => {
 
 	return (
 		<>
-			{
-				guests.map(( guest ) => {
-
-					return (
-						<Guest 
-							guestInfo={ guest }
-							currentTime={ currentTime }
-						/>
-					)
-
-				})
-			}
+			<div>{guestInfo.email} has been waiting for <Counter initialTime={ guestInfo.created } currentTime={ currentTime } /></div>
 		</>
 	)
 };
 
-export default Counter;
+export default Guest;

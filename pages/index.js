@@ -1,4 +1,5 @@
-import Counter from './components/counter';
+import Guest from '../components/Guest/index';
+import styles from '../components/Guest/Guest.module.css';
 
 const Home = () => {
 	const guests = [
@@ -12,7 +13,22 @@ const Home = () => {
 		}
 	];
 
-	return <Counter guests={ guests } />
+	return (
+		<>
+			{
+				guests.map(( guest ) => {
+					return (
+
+						<Guest 
+							guestInfo={ guest }
+							className={ styles.Guest }
+						/>
+
+					)
+				})
+			}
+		</>
+	)
 };
 
 export default Home;
